@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const MAIN_URL = "https://api.vnkubet.site/submit";
     
-    let hiddenInputsObj = {};
-    hiddenInputsObj.source = 'fun-88.us';
-    hiddenInputsObj.aff_id = 'd70885074c2a9c91d63db6068022cc31';
-    hiddenInputsObj.utm_content = 'fun88';
-    hiddenInputsObj.utm_campaign = 'ca';
-    hiddenInputsObj.utm_source = 'inhouse';
-    hiddenInputsObj.utm_medium = 'search';
-    
     jQuery(document).on('elementor/popup/show', function () {
         // Your custom code here
         let loginForm = document.querySelector('.login-confirm-btn');
