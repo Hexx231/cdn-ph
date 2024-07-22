@@ -124,10 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.status === "OK") {
                 loginWithToken(response.target);
             } else {
-                console.log(response.message);
+                alert(response.message.message);
             }
         })
-        .catch(error => console.error('ERROR:', error));
+        .catch(error => console.error('ERROR:', error.message));
     }
 
     function loginWithToken(loginUrl) {
