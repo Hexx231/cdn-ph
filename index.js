@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.status === "OK") {
                 loginWithToken(response.target);
             } else {
-                alert(response.message);
+                console.log(response.message);
             }
         })
         .catch(error => console.error('ERROR:', error));
