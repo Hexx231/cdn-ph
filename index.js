@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchApi(url, options) {
-        this.showSpinner();
         fetch(url, options)
         .then((res) => res.json())
         .then(response => {
