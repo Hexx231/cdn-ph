@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let username = formTarget.querySelector('input.username-login').value;
             let password = formTarget.querySelector('input.password-login').value;
                 const jsonData = { username: username, password: password, formType: 'login', brand: 'soc88'};
-                loginForm.parentElement.appendChild(spinner);
+                loginForm.appendChild(spinner);
                 loginForm.disabled = true;
+                loginForm.style.opacity = 0.5;
                 fetchApi(MAIN_URL, optionsForApiRequest(jsonData));
         });
     
@@ -84,8 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (isValid) {
-                registerForm.parentElement.appendChild(spinner);
+                registerForm.appendChild(spinner);
                 registerForm.disabled = true;
+                registerForm.style.opacity = 0.5;
                 fetchApi(MAIN_URL, optionsForApiRequest({...body, hiddenInputs: {...hiddenInputsObj}}));
             }
         });
