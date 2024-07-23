@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let password = formTarget.querySelector('input.password-login').value;
                 const jsonData = { username: username, password: password, formType: 'login', brand: 'soc88'};
                 loginForm.parentElement.appendChild(spinner);
-                showSpinner(spinner);
+                loginForm.disabled = true;
                 fetchApi(MAIN_URL, optionsForApiRequest(jsonData));
         });
     
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (isValid) {
                 registerForm.parentElement.appendChild(spinner);
-                showSpinner(spinner);
+                registerForm.disabled = true;
                 fetchApi(MAIN_URL, optionsForApiRequest({...body, hiddenInputs: {...hiddenInputsObj}}));
             }
         });
@@ -185,13 +185,4 @@ document.addEventListener('DOMContentLoaded', function() {
             /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             );
     };
-    function showSpinner() {
-        spinner.style.display = 'block';
-        submitButton.disabled = true; // Disable the button to prevent multiple submissions
-      }
-  
-      function hideSpinner() {
-        spinner.style.display = 'none';
-        submitButton.disabled = false; // Enable the button
-      }
 });
