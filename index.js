@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let loginForm = document.querySelector('.login-confirm-btn');
         let registerForm = document.querySelector('.register-confirm-btn');
         let spinner = document.createElement('img');
-        spinner.src = 'https://cdn.jsdelivr.net/gh/Hexx231/cdn-ph@main/spinner.gif';
+        spinner.src = 'https://cdn.jsdelivr.net/gh/Hexx231/cdn-ph@main/loading.gif';
         spinner.style.height = '30px';
         spinner.style.width = '30px';
     
