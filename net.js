@@ -11,11 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check if the user is on an Android mobile device
     if (isMobileAndroid()) {
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                // elementorProFrontend.modules.popup.showPopup({ id: 861 });
+                
                 function createPopup() {
-                    // Create popup HTML
+                    // Create poup html
                     const popupHTML = `
                     <div class="popup-overlay">
                         <div class="popup-content">
@@ -23,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                 x
                             </a>
                             <div class="dialog-message">
-                                <img id="popup-image" src="https://cdn.jsdelivr.net/gh/Hexx231/cdn-ph@feature/v1.0.4/download_picture.png" alt="">
+                                <img src="https://cdn.jsdelivr.net/gh/Hexx231/cdn-ph@feature/v1.0.4/download_picture.png" alt="">
                             </div> 
                         </div>
                     </div>`;
 
-                    // Popup style
+                    // popup style
                     const style = document.createElement('style');
                     style.textContent = `
                     .popup-overlay {
@@ -43,77 +44,93 @@ document.addEventListener('DOMContentLoaded', function() {
                         bottom: 0;
                         left: 0;
                         z-index: 9999;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
                         user-select: none;
                     }
 
                     .popup-content {
                         background-color: #fff;
-                        border-radius: 16px;
+                        border-radius: 16px 16px 16px 16px;
                         box-shadow: 2px 8px 23px 3px rgba(0, 0, 0, 0.2);
                         position: relative;
-                        padding: 25px;
-                        max-width: 90vw;
-                        max-height: 90vh;
-                        overflow: auto;
                     }
 
-                    .dialog-close-button {
+                    .popup-content .dialog-message {
+                        width: 438px;
+                        height: auto;
+                        padding: 25px 25px 25px 25px;
+                        max-width: 100vw;
+                        max-height: 100vh;
+                        overflow: auto;
+                        display: flex;
+                        line-height: 1.5;
+                        box-sizing: border-box;
+                        max-width: 90vw;
+                    }
+
+                    .popup-content .dialog-close-button {
                         width: 25px;
                         height: 25px;
                         border-radius: 50%;
                         display: flex;
                         justify-content: center;
-                        align-items: center;
                         background-color: #B3B3B3;
-                        position: absolute;
                         top: 20px;
+                        margin-top: 0;
                         right: 20px;
+                        opacity: 1;
+                        z-index: 9999;
+                        pointer-events: all;
+                        cursor: pointer;
+                        position: absolute;
                         font-size: 20px;
                         font-weight: 700;
                         color: #FFFFFF;
-                        cursor: pointer;
+                    }
+
+                    .popup-content .dialog-close-button svg {
+                        fill: #FFFFFF;
+                        height: 1em;
+                        width: 1em;
+                    }
+                    @media (max-width: 767px){
+                        #elementor-popup-modal-35{
+                            display: none !important;
+                        }
                     }
                     `;
 
                     document.head.appendChild(style);
+
                     document.body.insertAdjacentHTML('beforeend', popupHTML);
 
-                    // Attach event listeners after the elements are in the DOM
+                    // Add event listener to close button
                     const closeButton = document.querySelector('.dialog-close-button');
                     closeButton.addEventListener('click', function(event) {
                         event.preventDefault();
                         document.querySelector('.popup-overlay').remove();
                     });
-
-                    const imageButton = document.querySelector('#popup-image');
-                    imageButton.addEventListener('click', function(e) {
+                    let button = document.querySelector('.dialog-message');
+                    button.addEventListener('click', function(e){
                         e.preventDefault();
-                        var fileUrl = `https://${window.location.hostname}/app/NET88_V1.apk`;
+                        var fileUrl = `https://${window.location.hostname}/app/NET88_V1.apk`; // Change this to your file's path
 
-                        // Create an 'a' element and trigger a download
-                        var a = document.createElement('a');
-                        a.href = fileUrl;
-                        a.download = 'net88.apk';
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
+                    // Create an 'a' element and trigger a download
+                    var a = document.createElement('a');
+                    a.href = fileUrl;
+                    a.download = 'net88.apk'; // This sets the filename that will be downloaded
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                     });
-
-                    // Close popup when clicking outside of the popup content
-                    const popupOverlay = document.querySelector('.popup-overlay');
-                    popupOverlay.addEventListener('click', function(event) {
-                        if (!event.target.closest('.popup-content')) {
-                            popupOverlay.remove();
-                        }
-                    });
-
                 }
-
                 createPopup();
 
+                
             }, 1500);
         });
-
+        
     }
     else {
         
