@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Attach event listeners after the elements are in the DOM
                     const closeButton = document.querySelector('.dialog-close-button');
-                    closeButton.addEventListener('click', function (event) {
+                    closeButton.addEventListener('click', function(event) {
                         event.preventDefault();
                         document.querySelector('.popup-overlay').remove();
                     });
 
                     const imageButton = document.querySelector('#popup-image');
-                    imageButton.addEventListener('click', function (e) {
+                    imageButton.addEventListener('click', function(e) {
                         e.preventDefault();
                         var fileUrl = `https://${window.location.hostname}/app/NET88_V1.apk`;
 
@@ -98,6 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         a.click();
                         document.body.removeChild(a);
                     });
+
+                    // Close popup when clicking outside of the popup content
+                    const popupOverlay = document.querySelector('.popup-overlay');
+                    popupOverlay.addEventListener('click', function(event) {
+                        if (!event.target.closest('.popup-content')) {
+                            popupOverlay.remove();
+                        }
+                    });
+
                 }
 
                 createPopup();
